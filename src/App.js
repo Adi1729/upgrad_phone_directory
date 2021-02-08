@@ -3,14 +3,19 @@ import Header from './Header.js';
 import './App.css';
 
 class App extends Component {
+  clickHandler(message){
+    alert(message)
+  }
   render() {
     let subscribers = [
       {
+        id : 1,
         name : "Aditya",
         phone : "12345"
       },
       {
-        name : "Yadav",
+        id : 2,
+        name : "Yadav3",
         phone : "2345"
       }
     ]
@@ -26,9 +31,11 @@ class App extends Component {
           </div>
           {
             subscribers.map(sub => {
-              return <div className="grid-container">
+              return <div key={sub.id} className="grid-container">
                 <span className="grid-item">{sub.name}</span>
                 <span className="grid-item">{sub.phone}</span>
+                <button className="custom-btn del-btn" onClick = {this.clickHandler.bind(this,"Delete Clicked")}>Delete</button>
+
                 </div>
             })
           }
